@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>galvanize</h1>
+        </header>
+        <main>
+        <section>
+            <h2>Location</h2>
+            <div id="mapid"></div>
+
+        </section>
+
+        </main>
+        <script>
+                function initMap() {
+                    const galv = {lat: 39.757657, lng: -105.006953};
+                    const map = new google.maps.Map(document.getElementById("mapid"), {
+                    zoom: 13,
+                    center: galv
+                    });
+                    const marker = new google.maps.Marker({
+                        position: galv,
+                        label: {
+                            color: "black",
+                            fontWeight: "bold",
+                            text: "Galvanize",
+                        },
+                        map: map
+                    })
+                    var contentString =
+                        "<div id='content'>" +
+                        "<div id='siteNotice'>" +
+                        "</div>" +
+                        "<h1 id='firstHeading' class='firstHeading'>Galvanize</h1>" +
+                        "<div id='bodyContent'>" +
+                        "<p><b>Address:</b> 1644 Platte St, Denver, CO 80202</p>"
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    })
+
+                    marker.addListener("click", function() {
+                    infowindow.open(map, marker)})
+                }
+
+            </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkoXqE8lxcr57FUZzu8xT0z61xU__hQFg&callback=initMap">
+          </script>
+    </body>
+</html>
